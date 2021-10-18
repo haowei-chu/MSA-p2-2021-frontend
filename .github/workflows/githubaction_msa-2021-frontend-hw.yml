@@ -6,12 +6,16 @@ name: Build and deploy Node.js app to Azure Web App - msa-2021-frontend-hw
 on:
   push:
     branches:
+      - main
       - githubaction
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: "./frontend-app"
 
     steps:
       - uses: actions/checkout@v2
@@ -53,4 +57,4 @@ jobs:
           app-name: 'msa-2021-frontend-hw'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9C4F4595D60A4E9ABAA120654AE5F7BE }}
-          package: .
+          package: "./frontend-app/build"
