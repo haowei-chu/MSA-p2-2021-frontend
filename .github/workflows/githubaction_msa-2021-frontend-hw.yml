@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - main
-      - githubaction
+#      - githubaction
   workflow_dispatch:
 
 jobs:
